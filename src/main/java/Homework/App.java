@@ -13,23 +13,19 @@ public class App
     public static void main( String[] args )
     {
 
-        Mammals mammal = new Mammals();
-        mammal.species = "Dog";
-        mammal.furColor = "Black";
-        mammal.name = "Mike";
-        mammal.age = 2;
-        mammal.health = 9;
-        mammal.happiness = 10;
-        mammal.starving = 4;
-        mammal.favoriteFood = "Biscuits";
-        mammal.favoritePastime = "Running";
-        mammal.talk = "Woof! Woof! Woof!";
-
+        Animal animal = new Animal();
+        animal.name = "Mike";
+        animal.age = 2;
+        animal.health = 9;
+        animal.happiness = 10;
+        animal.starving = 4;
+        animal.favoriteFood = "Biscuits";
+        animal.favoritePastime = "Running";
 
         Fish fish = new Fish();
         fish.finsNumber = 5;
         fish.needMoreOxygenedWater = true;
-        fish.name = "Mike";
+        fish.name = "Marius";
         fish.age = 2;
         fish.health = 9;
         fish.happiness = 10;
@@ -39,16 +35,29 @@ public class App
 
 
         Adopter adopter = new Adopter();
-        adopter.name = "Alex";
+        adopter.adopterName = "Alex";
         adopter.wallet = 100.50;
+
+        Adopter adopter2 = new Adopter();
+        adopter2.adopterName = "Emilian";
+        adopter2.wallet = 72.68;
+
+
 
 
         PetFood petFood = new PetFood();
-        petFood.name = "Biscuits";
+        petFood.foodName = "Biscuits";
         petFood.price = 12.99;
         petFood.quantity = 10;
         petFood.expirationDate = LocalDate.now();
         petFood.stockAvailability = true;
+
+        PetFood petFood2 = new PetFood();
+        petFood2.foodName = "Lettuce";
+        petFood2.price = 12.99;
+        petFood2.quantity = 10;
+        petFood2.expirationDate = LocalDate.now();
+        petFood2.stockAvailability = true;
 
 
         Pastime pastime = new Pastime();
@@ -59,6 +68,27 @@ public class App
         veterinary.name = "Marius";
         veterinary.specialization = "surgeon";
         System.out.println("Expiration date is " + petFood.expirationDate.plusMonths(12));
+
+       adopter.feed(animal.name, petFood.foodName);
+       adopter2.feed(fish.name, petFood2.foodName);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

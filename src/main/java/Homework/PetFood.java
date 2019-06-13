@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class PetFood {
 
-    String name;
+    String foodName;
     double price;
     int quantity;
     boolean stockAvailability;
@@ -17,6 +17,14 @@ public class PetFood {
 
 
 
+    }
 
-}
+
+
+
+
+
+
+
+
 
