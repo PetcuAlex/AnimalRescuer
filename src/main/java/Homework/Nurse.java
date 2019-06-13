@@ -1,8 +1,10 @@
 package Homework;
 
-public class Nurse {
+public class Nurse extends  MedicalStaff {
 
-    String name;
-    int age;
+    String giveDiagnostic;
+    String writePrescription;
+    String doExamination;
+    String giveMedicine;
 
 }

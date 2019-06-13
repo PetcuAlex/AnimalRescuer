@@ -9,10 +9,8 @@ public class Animal {
     int happiness;
     String favoriteFood;
     String favoritePastime;
-    String color;
     String breed;
     int height;
     int weight;
-
 
 }

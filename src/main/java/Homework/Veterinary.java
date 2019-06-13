@@ -1,12 +1,11 @@
 package Homework;
 
-public class Veterinary {
+public class Veterinary extends MedicalStaff {
 
-    String name;
-    String specialization;
-    int age;
-    String race;
-    int happiness;
-    int experience;
+    String giveDiagnostic;
+    String doSurgery;
+    String writePrescription;
+    String doExamination;
+    String giveMedicine;
 
 }

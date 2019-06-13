@@ -13,14 +13,29 @@ public class App
     public static void main( String[] args )
     {
 
-        Animal animal = new Animal();
-        animal.name = "Mike";
-        animal.age = 2;
-        animal.health = 9;
-        animal.happiness = 10;
-        animal.starving = 4;
-        animal.favoriteFood = "Biscuits";
-        animal.favoritePastime = "Swimming";
+        Mammals mammal = new Mammals();
+        mammal.species = "Dog";
+        mammal.furColor = "Black";
+        mammal.name = "Mike";
+        mammal.age = 2;
+        mammal.health = 9;
+        mammal.happiness = 10;
+        mammal.starving = 4;
+        mammal.favoriteFood = "Biscuits";
+        mammal.favoritePastime = "Running";
+        mammal.talk = "Woof! Woof! Woof!";
+
+
+        Fish fish = new Fish();
+        fish.finsNumber = 5;
+        fish.needMoreOxygenedWater = true;
+        fish.name = "Mike";
+        fish.age = 2;
+        fish.health = 9;
+        fish.happiness = 10;
+        fish.starving = 4;
+        fish.favoriteFood = "Biscuits";
+        fish.favoritePastime = "Swimming";
 
 
         Adopter adopter = new Adopter();
