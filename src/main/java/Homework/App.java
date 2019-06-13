@@ -72,6 +72,9 @@ public class App
        adopter.feed(animal.name, petFood.foodName);
        adopter2.feed(fish.name, petFood2.foodName);
 
+       adopter.walking(animal.name,animal.favoritePastime);
+       adopter2.walking(fish.name, fish.favoritePastime);
+
 
 
 

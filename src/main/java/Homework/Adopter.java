@@ -17,6 +17,13 @@ public class Adopter {
 
     }
 
+    public void walking(String nameAnimal, String nameActivity){
+
+        System.out.println(adopterName + " just go " + nameActivity + "  with " + nameAnimal);
+
+
+    }
+
 
 
 }
