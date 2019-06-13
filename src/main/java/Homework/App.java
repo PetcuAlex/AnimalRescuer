@@ -1,6 +1,9 @@
 package Homework;
 
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 /**
  * Hello world!
  *
@@ -29,7 +32,7 @@ public class App
         petFood.name = "Biscuits";
         petFood.price = 12.99;
         petFood.quantity = 10;
-        petFood.expirationDate = "01 Jan 2020";
+        petFood.expirationDate = LocalDate.now();
         petFood.stockAvailability = true;
 
 
@@ -40,6 +43,7 @@ public class App
         Veterinary veterinary = new Veterinary();
         veterinary.name = "Marius";
         veterinary.specialization = "surgeon";
+        System.out.println("Expiration date is " + petFood.expirationDate.plusMonths(12));
 
 
 
