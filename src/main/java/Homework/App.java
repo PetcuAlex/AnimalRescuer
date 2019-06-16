@@ -49,14 +49,14 @@ public class App
         petFood.foodName = "Biscuits";
         petFood.price = 12.99;
         petFood.quantity = 10;
-        petFood.expirationDate = LocalDate.now();
+        petFood.expirationDate = LocalDate.of(2020,05,20);
         petFood.stockAvailability = true;
 
         PetFood petFood2 = new PetFood();
         petFood2.foodName = "Lettuce";
         petFood2.price = 12.99;
         petFood2.quantity = 10;
-        petFood2.expirationDate = LocalDate.now();
+        petFood2.expirationDate = petFood.expirationDate;
         petFood2.stockAvailability = true;
 
 
@@ -67,13 +67,16 @@ public class App
         Veterinary veterinary = new Veterinary();
         veterinary.name = "Marius";
         veterinary.specialization = "surgeon";
-        System.out.println("Expiration date is " + petFood.expirationDate.plusMonths(12));
+
+
+        System.out.println("Expiration date is " + petFood.expirationDate);
 
        adopter.feed(animal.name, petFood.foodName);
        adopter2.feed(fish.name, petFood2.foodName);
 
        adopter.walking(animal.name,animal.favoritePastime);
        adopter2.walking(fish.name, fish.favoritePastime);
+
 
 
 

@@ -11,7 +11,7 @@ public class PetFood {
     int quantity;
     boolean stockAvailability;
     String ingredients;
-    LocalDate expirationDate = LocalDate.now();
+    LocalDate expirationDate;
 
 
 
