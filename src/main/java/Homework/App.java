@@ -77,6 +77,11 @@ public class App
        adopter.walking(animal.name,animal.favoritePastime);
        adopter2.walking(fish.name, fish.favoritePastime);
 
+       Nurse nurse = new Nurse();
+       nurse.callingPatient = " Hey! Come in!";
+
+
+
 
 
 

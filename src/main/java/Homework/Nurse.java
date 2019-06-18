@@ -1,7 +1,8 @@
 package Homework;
 
-public class Nurse extends  MedicalStaff {
+public class Nurse extends  MedicalStaff{
 
 
+    String callingPatient;
 
 }
