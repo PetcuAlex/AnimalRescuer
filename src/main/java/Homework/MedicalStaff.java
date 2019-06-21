@@ -9,4 +9,7 @@ public class MedicalStaff {
     int happiness;
     int experience;
 
+    public MedicalStaff(String name) {
+        this.name = name;
+    }
 }

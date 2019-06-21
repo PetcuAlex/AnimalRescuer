@@ -10,6 +10,10 @@ public class Adopter {
     String job;
 
 
+    public Adopter(String adopterName) {
+        this.adopterName = adopterName;
+    }
+
     public void feed(String nameAnimal, String nameFood ){
 
         System.out.println(adopterName + " just gave " + nameFood + " food to " + nameAnimal);

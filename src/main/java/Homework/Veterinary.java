@@ -7,4 +7,7 @@ public class Veterinary extends MedicalStaff {
     String doExamination;
     String giveMedicine;
 
+    public Veterinary(String name) {
+        super(name);
+    }
 }

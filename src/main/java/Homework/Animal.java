@@ -13,4 +13,7 @@ public class Animal {
     int height;
     int weight;
 
+    public Animal(String name) {
+        this.name = name;
+    }
 }

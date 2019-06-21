@@ -13,8 +13,7 @@ public class App
     public static void main( String[] args )
     {
 
-        Animal animal = new Animal();
-        animal.name = "Mike";
+        Animal animal = new Animal("Mike");
         animal.age = 2;
         animal.health = 9;
         animal.happiness = 10;
@@ -22,10 +21,9 @@ public class App
         animal.favoriteFood = "Biscuits";
         animal.favoritePastime = "Running";
 
-        Fish fish = new Fish();
+        Fish fish = new Fish("Marius");
         fish.finsNumber = 5;
         fish.needMoreOxygenedWater = true;
-        fish.name = "Marius";
         fish.age = 2;
         fish.health = 9;
         fish.happiness = 10;
@@ -34,25 +32,22 @@ public class App
         fish.favoritePastime = "Swimming";
 
 
-        Adopter adopter = new Adopter();
-        adopter.adopterName = "Alex";
+        Adopter adopter = new Adopter("Alex");
         adopter.wallet = 100.50;
 
-        Adopter adopter2 = new Adopter();
-        adopter2.adopterName = "Emilian";
+        Adopter adopter2 = new Adopter("Emilian");
         adopter2.wallet = 72.68;
 
 
 
 
-        PetFood petFood = new PetFood();
+        PetFood petFood = new PetFood(LocalDate.of(2020,05,20));
         petFood.foodName = "Biscuits";
         petFood.price = 12.99;
         petFood.quantity = 10;
-        petFood.expirationDate = LocalDate.of(2020,05,20);
         petFood.stockAvailability = true;
 
-        PetFood petFood2 = new PetFood();
+        PetFood petFood2 = new PetFood(LocalDate.of(2020,10,14));
         petFood2.foodName = "Lettuce";
         petFood2.price = 12.99;
         petFood2.quantity = 10;
@@ -60,12 +55,10 @@ public class App
         petFood2.stockAvailability = true;
 
 
-        Pastime pastime = new Pastime();
-        pastime.name = "Swimming";
+        Pastime pastime = new Pastime("Swimming");
 
 
-        Veterinary veterinary = new Veterinary();
-        veterinary.name = "Marius";
+        Veterinary veterinary = new Veterinary("Marius");
         veterinary.specialization = "surgeon";
 
 
@@ -77,8 +70,12 @@ public class App
        adopter.walking(animal.name,animal.favoritePastime);
        adopter2.walking(fish.name, fish.favoritePastime);
 
-       Nurse nurse = new Nurse();
+       Nurse nurse = new Nurse("Maria");
        nurse.callingPatient = " Hey! Come in!";
+
+        System.out.println(nurse.name+  ": " + nurse.callingPatient);
+
+
 
 
 

@@ -6,4 +6,7 @@ public class Mammals extends Animal {
    String species;
    String furColor;
 
+   public Mammals(String name) {
+      super(name);
+   }
 }

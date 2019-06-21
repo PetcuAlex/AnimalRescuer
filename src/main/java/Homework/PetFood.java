@@ -14,10 +14,11 @@ public class PetFood {
     LocalDate expirationDate;
 
 
-
-
+    public PetFood(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
 
     }
+}
 
 
 
