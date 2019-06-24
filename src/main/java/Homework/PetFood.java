@@ -6,17 +6,65 @@ import java.util.Date;
 
 public class PetFood {
 
-    String foodName;
-    double price;
-    int quantity;
-    boolean stockAvailability;
-    String ingredients;
-    LocalDate expirationDate;
+    private String foodName;
+    private double price;
+    private int quantity;
+    private boolean stockAvailability;
+    private String ingredients;
+    private LocalDate expirationDate;
 
 
     public PetFood(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
 
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isStockAvailability() {
+        return stockAvailability;
+    }
+
+    public void setStockAvailability(boolean stockAvailability) {
+        this.stockAvailability = stockAvailability;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }
 

@@ -14,66 +14,66 @@ public class App
     {
 
         Animal animal = new Animal("Mike");
-        animal.age = 2;
-        animal.health = 9;
-        animal.happiness = 10;
-        animal.starving = 4;
-        animal.favoriteFood = "Biscuits";
-        animal.favoritePastime = "Running";
+        animal.setAge(2);
+        animal.setHealth(9);
+        animal.setHappiness(10);
+        animal.setStarving(4);
+        animal.setFavoriteFood("Biscuits");
+        animal.setFavoritePastime("Running");
 
         Fish fish = new Fish("Marius");
-        fish.finsNumber = 5;
-        fish.needMoreOxygenedWater = true;
-        fish.age = 2;
-        fish.health = 9;
-        fish.happiness = 10;
-        fish.starving = 4;
-        fish.favoriteFood = "Biscuits";
-        fish.favoritePastime = "Swimming";
+        fish.setFinsNumber(5);
+        fish.setNeedMoreOxygenedWater(true);
+        fish.setAge(2);
+        fish.setHealth(9);
+        fish.setHappiness(10);
+        fish.setStarving(4);
+        fish.setFavoriteFood("Biscuits");
+        fish.setFavoritePastime("Swimming");
 
 
         Adopter adopter = new Adopter("Alex");
-        adopter.wallet = 100.50;
+        adopter.setWallet(100.50);
 
         Adopter adopter2 = new Adopter("Emilian");
-        adopter2.wallet = 72.68;
+        adopter2.setWallet(72.68);
 
 
 
 
         PetFood petFood = new PetFood(LocalDate.of(2020,05,20));
-        petFood.foodName = "Biscuits";
-        petFood.price = 12.99;
-        petFood.quantity = 10;
-        petFood.stockAvailability = true;
+        petFood.setFoodName("Biscuits");
+        petFood.setPrice(12.99);
+        petFood.setQuantity(10);
+        petFood.setStockAvailability(true);
 
         PetFood petFood2 = new PetFood(LocalDate.of(2020,10,14));
-        petFood2.foodName = "Lettuce";
-        petFood2.price = 12.99;
-        petFood2.quantity = 10;
-        petFood2.expirationDate = petFood.expirationDate;
-        petFood2.stockAvailability = true;
+        petFood2.setFoodName("Lettuce");
+        petFood2.setPrice(12.99);
+        petFood2.setQuantity(10);
+        petFood2.setExpirationDate(petFood.getExpirationDate());
+        petFood2.setStockAvailability(true);
 
 
         Pastime pastime = new Pastime("Swimming");
 
 
         Veterinary veterinary = new Veterinary("Marius");
-        veterinary.specialization = "surgeon";
+        veterinary.setSpecialization("surgeon");
 
 
-        System.out.println("Expiration date is " + petFood.expirationDate);
+        System.out.println("Expiration date is " + petFood.getExpirationDate());
 
-       adopter.feed(animal.name, petFood.foodName);
-       adopter2.feed(fish.name, petFood2.foodName);
+       adopter.feed(animal.getName(), petFood.getFoodName());
+       adopter2.feed(fish.getName(), petFood2.getFoodName());
 
-       adopter.walking(animal.name,animal.favoritePastime);
-       adopter2.walking(fish.name, fish.favoritePastime);
+       adopter.walking(animal.getName(), animal.getFavoritePastime());
+       adopter2.walking(fish.getName(), fish.getFavoritePastime());
 
        Nurse nurse = new Nurse("Maria");
-       nurse.callingPatient = " Hey! Come in!";
+       nurse.setCallingPatient(" Hey! Come in!");
 
-        System.out.println(nurse.name+  ": " + nurse.callingPatient);
+        System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
 
 
 
