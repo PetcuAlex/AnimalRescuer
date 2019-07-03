@@ -12,6 +12,13 @@ public class App
     public static void main( String[] args )
     {
 
+        Animal animal = new Animal("Tom");
+        animal.setAge(1);
+        animal.setFavoriteFood("Cheese");
+        animal.setFavoritePastime("Running");
+
+
+
         Dog dog = new Dog("Mike" ,"Bulldog");
         dog.setAge(2);
         dog.setHealth(9);
@@ -75,13 +82,16 @@ public class App
 
         System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
 
-        dog.expressHappiness(dog.getName());
-        fish.expressHappiness(fish.getName());
+        animal.expressHappines();
+        dog.expressHappines();
+        fish.expressHappines();
 
         Animal dog2 = new Dog("Spike", "Husky");
         dog2.expressHappines();
         Animal fish2 = new Fish("Luie");
         fish2.expressHappines();
+        Animal animal2 = new Animal("Dora");
+        animal2.expressHappines();
 
 
 

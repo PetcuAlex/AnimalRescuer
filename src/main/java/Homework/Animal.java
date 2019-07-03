@@ -14,7 +14,8 @@ public class Animal {
 
     public void expressHappines(){
 
-        System.out.println("Your animal is happy");
+        getName();
+        System.out.println(getName() + " is happy");
 
     }
 

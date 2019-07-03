@@ -7,10 +7,9 @@ public class Dog extends Animal {
    private String furColor;
 
 
-   public void expressHappiness(String name){
-
+   @Override
+   public void expressHappines() {
       System.out.println(getName() + " is wagging");
-
    }
 
    public Dog(String name, String breed) {

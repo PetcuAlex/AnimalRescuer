@@ -10,10 +10,9 @@ public class Fish extends Animal {
         super(name);
     }
 
-    public void expressHappiness(String name){
-
-        System.out.println(getName() + " is hiding behind plants");
-
+    @Override
+    public void expressHappines() {
+        System.out.println(getName() + " is hiding behind stones");
     }
 
     public int getFinsNumber() {
