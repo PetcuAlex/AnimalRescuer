@@ -1,12 +1,24 @@
 package Homework;
 
-public class Mammals extends Animal {
+public class Dog extends Animal {
 
    private String talk;
-   private String species;
+   private String breed;
    private String furColor;
 
-   public Mammals(String name) {
+
+   public void behaviour(String name){
+
+      System.out.println(getName() + " is wagging");
+
+   }
+
+   public Dog(String name, String breed) {
+      super(name);
+      this.breed = breed;
+   }
+
+   public Dog(String name) {
       super(name);
    }
 
@@ -19,11 +31,11 @@ public class Mammals extends Animal {
    }
 
    public String getSpecies() {
-      return species;
+      return breed;
    }
 
    public void setSpecies(String species) {
-      this.species = species;
+      this.breed = species;
    }
 
    public String getFurColor() {

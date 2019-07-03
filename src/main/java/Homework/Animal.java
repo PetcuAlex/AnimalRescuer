@@ -9,9 +9,15 @@ public class Animal {
     private int happiness;
     private String favoriteFood;
     private String favoritePastime;
-    private String breed;
     private int height;
     private int weight;
+
+    public void behaviour(){
+
+        System.out.println("Your animal is happy");
+
+    }
+
 
     public Animal(String name) {
         this.name = name;
@@ -73,13 +79,6 @@ public class Animal {
         this.favoritePastime = favoritePastime;
     }
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
 
     public int getHeight() {
         return height;

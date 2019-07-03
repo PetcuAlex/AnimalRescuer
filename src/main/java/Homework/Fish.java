@@ -4,9 +4,16 @@ public class Fish extends Animal {
 
    private int finsNumber;
    private boolean needMoreOxygenedWater;
+   private String species;
 
     public Fish(String name) {
         super(name);
+    }
+
+    public void behaviour(String name){
+
+        System.out.println(getName() + " is hiding behind plants");
+
     }
 
     public int getFinsNumber() {
@@ -23,5 +30,13 @@ public class Fish extends Animal {
 
     public void setNeedMoreOxygenedWater(boolean needMoreOxygenedWater) {
         this.needMoreOxygenedWater = needMoreOxygenedWater;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 }

@@ -2,7 +2,6 @@ package Homework;
 
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 /**
  * Hello world!
@@ -13,15 +12,16 @@ public class App
     public static void main( String[] args )
     {
 
-        Animal animal = new Animal("Mike");
-        animal.setAge(2);
-        animal.setHealth(9);
-        animal.setHappiness(10);
-        animal.setStarving(4);
-        animal.setFavoriteFood("Biscuits");
-        animal.setFavoritePastime("Running");
+        Dog dog = new Dog("Mike" ,"Bulldog");
+        dog.setAge(2);
+        dog.setHealth(9);
+        dog.setHappiness(10);
+        dog.setStarving(4);
+        dog.setFavoriteFood("Biscuits");
+        dog.setFavoritePastime("Running");
 
         Fish fish = new Fish("Marius");
+        fish.setSpecies("Golden Fish");
         fish.setFinsNumber(5);
         fish.setNeedMoreOxygenedWater(true);
         fish.setAge(2);
@@ -64,16 +64,19 @@ public class App
 
         System.out.println("Expiration date is " + petFood.getExpirationDate());
 
-       adopter.feed(animal.getName(), petFood.getFoodName());
+       adopter.feed(dog.getName(), petFood.getFoodName());
        adopter2.feed(fish.getName(), petFood2.getFoodName());
 
-       adopter.walking(animal.getName(), animal.getFavoritePastime());
+       adopter.walking(dog.getName(), dog.getFavoritePastime());
        adopter2.walking(fish.getName(), fish.getFavoritePastime());
 
        Nurse nurse = new Nurse("Maria");
        nurse.setCallingPatient(" Hey! Come in!");
 
         System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
+
+        dog.behaviour(dog.getName());
+        fish.behaviour(fish.getName());
 
 
 
