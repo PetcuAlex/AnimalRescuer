@@ -80,7 +80,7 @@ public class App
 
         Animal dog2 = new Dog("Spike", "Husky");
         dog2.expressHappines();
-        Animal fish2 = new Fish("Michael");
+        Animal fish2 = new Fish("Luie");
         fish2.expressHappines();
 
 
