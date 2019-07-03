@@ -75,8 +75,14 @@ public class App
 
         System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
 
-        dog.behaviour(dog.getName());
-        fish.behaviour(fish.getName());
+        dog.expressHappiness(dog.getName());
+        fish.expressHappiness(fish.getName());
+
+        Animal dog2 = new Dog("Spike", "Husky");
+        dog2.expressHappines();
+        Animal fish2 = new Fish("Michael");
+        fish2.expressHappines();
+
 
 
 

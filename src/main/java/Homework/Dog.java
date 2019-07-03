@@ -7,7 +7,7 @@ public class Dog extends Animal {
    private String furColor;
 
 
-   public void behaviour(String name){
+   public void expressHappiness(String name){
 
       System.out.println(getName() + " is wagging");
 

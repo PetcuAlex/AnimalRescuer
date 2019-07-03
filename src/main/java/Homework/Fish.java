@@ -10,7 +10,7 @@ public class Fish extends Animal {
         super(name);
     }
 
-    public void behaviour(String name){
+    public void expressHappiness(String name){
 
         System.out.println(getName() + " is hiding behind plants");
 

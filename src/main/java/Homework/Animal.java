@@ -12,7 +12,7 @@ public class Animal {
     private int height;
     private int weight;
 
-    public void behaviour(){
+    public void expressHappines(){
 
         System.out.println("Your animal is happy");
 
