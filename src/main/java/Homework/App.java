@@ -75,8 +75,8 @@ public class App
        adopter.feed(dog,petFood);
        adopter2.feed(fish,petFood2);
 
-       adopter.walking(dog,pastime2);
-       adopter2.walking(fish,pastime);
+       adopter.entertain(dog,pastime2);
+       adopter2.entertain(fish,pastime);
 
 //       Nurse nurse = new Nurse("Maria");
 //       nurse.setCallingPatient(" Hey! Come in!");
