@@ -25,7 +25,7 @@ public class App
         dog.setHappiness(10);
         dog.setStarving(4);
         dog.setFavoriteFood("Biscuits");
-        dog.setFavoritePastime("Running");
+        dog.setFavoritePastime("Walking");
 
         Fish fish = new Fish("Marius");
         fish.setSpecies("Golden Fish");
@@ -62,8 +62,8 @@ public class App
         petFood2.setStockAvailability(true);
 
 
-        Pastime pastime = new Pastime("swimming");
-        Pastime pastime2 = new Pastime("running");
+        Pastime pastime = new Pastime("Swimming");
+        Pastime pastime2 = new Pastime("Running");
 
 
         Veterinary veterinary = new Veterinary("Marius");
@@ -72,10 +72,13 @@ public class App
 
         System.out.println("Expiration date is " + petFood.getExpirationDate());
 
-       adopter.feed(dog,petFood);
-       adopter2.feed(fish,petFood2);
+       adopter.feed(dog,petFood2);
+        System.out.println();
+       adopter2.feed(fish,petFood);
+        System.out.println();
 
        adopter.entertain(dog,pastime2);
+        System.out.println();
        adopter2.entertain(fish,pastime);
 
 //       Nurse nurse = new Nurse("Maria");

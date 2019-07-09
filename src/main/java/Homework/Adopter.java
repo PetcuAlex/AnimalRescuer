@@ -14,25 +14,32 @@ public class Adopter {
         this.adopterName = adopterName;
     }
 
-    public void feed(Animal animal,PetFood petFood ){
+    public void feed(Animal animal, PetFood petFood) {
 
         System.out.println(adopterName + " just gave " + petFood.getFoodName() + " food to " + animal.getName());
         int newStarvingLevel = animal.getStarving();
         newStarvingLevel--;
         System.out.println("Your starving level is: " + newStarvingLevel);
-
-
+        if (petFood.getFoodName().equals(animal.getFavoriteFood())){
+            int newHappinessLevel = animal.getHappiness();
+            newHappinessLevel++;
+            System.out.println("You fed your pet with his favorite food,so he is happier now.Happiness level is :" + newHappinessLevel);
+        }
 
 
     }
 
-    public void entertain(Animal animal,Pastime pastime){
+    public void entertain(Animal animal, Pastime pastime) {
 
         System.out.println(adopterName + " just go " + pastime.getName() + "  with " + animal.getName());
         int newHappinessLevel = animal.getHappiness();
-        newHappinessLevel++;
-        System.out.println("Your pet is now happy!Happiness level: " + newHappinessLevel);
-
+       if (pastime.getName().equals(animal.getFavoritePastime())){
+           newHappinessLevel +=2;
+           System.out.println("You do your pet's favorite activity so it's happiness level is bigger: " + newHappinessLevel);
+       }else{
+           newHappinessLevel++;
+           System.out.println("Your happiness level is: " +newHappinessLevel);
+       }
 
 
     }
