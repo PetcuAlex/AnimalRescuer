@@ -5,7 +5,7 @@ public class Animal {
     private String name;
     private int age;
     private int health;
-    private int starving;
+    int starving;
     private int happiness;
     private String favoriteFood;
     private String favoritePastime;
@@ -14,7 +14,6 @@ public class Animal {
 
     public void expressHappines(){
 
-        getName();
         System.out.println(getName() + " is happy");
 
     }

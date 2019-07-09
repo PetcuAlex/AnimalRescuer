@@ -62,7 +62,8 @@ public class App
         petFood2.setStockAvailability(true);
 
 
-        Pastime pastime = new Pastime("Swimming");
+        Pastime pastime = new Pastime("swimming");
+        Pastime pastime2 = new Pastime("running");
 
 
         Veterinary veterinary = new Veterinary("Marius");
@@ -71,27 +72,27 @@ public class App
 
         System.out.println("Expiration date is " + petFood.getExpirationDate());
 
-       adopter.feed(dog.getName(), petFood.getFoodName());
-       adopter2.feed(fish.getName(), petFood2.getFoodName());
+       adopter.feed(dog,petFood);
+       adopter2.feed(fish,petFood2);
 
-       adopter.walking(dog.getName(), dog.getFavoritePastime());
-       adopter2.walking(fish.getName(), fish.getFavoritePastime());
+       adopter.walking(dog,pastime2);
+       adopter2.walking(fish,pastime);
 
-       Nurse nurse = new Nurse("Maria");
-       nurse.setCallingPatient(" Hey! Come in!");
-
-        System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
-
-        animal.expressHappines();
-        dog.expressHappines();
-        fish.expressHappines();
-
-        Animal dog2 = new Dog("Spike", "Husky");
-        dog2.expressHappines();
-        Animal fish2 = new Fish("Luie");
-        fish2.expressHappines();
-        Animal animal2 = new Animal("Dora");
-        animal2.expressHappines();
+//       Nurse nurse = new Nurse("Maria");
+//       nurse.setCallingPatient(" Hey! Come in!");
+//
+//        System.out.println(nurse.getName() +  ": " + nurse.getCallingPatient());
+//
+//        animal.expressHappines();
+//        dog.expressHappines();
+//        fish.expressHappines();
+//
+//        Animal dog2 = new Dog("Spike", "Husky");
+//        dog2.expressHappines();
+//        Animal fish2 = new Fish("Luie");
+//        fish2.expressHappines();
+//        Animal animal2 = new Animal("Dora");
+//        animal2.expressHappines();
 
 
 

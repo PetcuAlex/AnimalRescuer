@@ -14,19 +14,24 @@ public class Adopter {
         this.adopterName = adopterName;
     }
 
-    public void feed(String nameAnimal, String nameFood ){
+    public void feed(Animal animal,PetFood petFood ){
 
-        System.out.println(adopterName + " just gave " + nameFood + " food to " + nameAnimal);
+        System.out.println(adopterName + " just gave " + petFood.getFoodName() + " food to " + animal.getName());
+
+
+
+
+
+    }
+
+    public void walking(Animal animal,Pastime pastime){
+
+        System.out.println(adopterName + " just go " + pastime.getName() + "  with " + animal.getName());
+
 
 
     }
 
-    public void walking(String nameAnimal, String nameActivity){
-
-        System.out.println(adopterName + " just go " + nameActivity + "  with " + nameAnimal);
-
-
-    }
 
     public String getAdopterName() {
         return adopterName;
