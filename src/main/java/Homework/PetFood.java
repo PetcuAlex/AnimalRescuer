@@ -14,10 +14,11 @@ public class PetFood {
     private LocalDate expirationDate;
 
 
-    public PetFood(LocalDate expirationDate) {
-        this.expirationDate = expirationDate;
 
-    }
+//    public PetFood(LocalDate expirationDate) {
+//        this.expirationDate = expirationDate;
+//
+//    }
 
     public String getFoodName() {
         return foodName;
@@ -65,6 +66,14 @@ public class PetFood {
 
     public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "name='" + foodName + '\'' +
+                ", expiration date: " + expirationDate +
+                '}';
     }
 }
 

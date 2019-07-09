@@ -5,9 +5,9 @@ public class Pastime {
     private String name;
     private boolean availabilty;
 
-    public Pastime(String name) {
-        this.name = name;
-    }
+//    public Pastime(String name) {
+//        this.name = name;
+//    }
 
     public String getName() {
         return name;
