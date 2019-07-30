@@ -27,6 +27,10 @@ public class Adopter {
 
 
     }
+    public void goToDoctor(Animal animal, Veterinary veterinary){
+        System.out.println(adopterName + " is taking " + animal.getName() + " to " + veterinary.getName());
+        System.out.println("Now " + animal.getName() + " is scared and his happines level decreased to " + animal.getHappiness());
+    }
 
     public void entertain(Animal animal, Pastime pastime) {
 

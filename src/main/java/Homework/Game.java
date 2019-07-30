@@ -8,6 +8,7 @@ public class Game {
 
     private Adopter player;
     private Animal pet;
+    private Veterinary doctor;
     private PetFood[] availableFood = new PetFood[4];
     private Pastime[] availableActivities = new Pastime[3];
 
@@ -17,23 +18,29 @@ public class Game {
         initFood();
         displayFood();
         initActivities();
+        initVeterinary();
         displayActivities();
         initAdopter();
         initAniaml();
-        while (pet.getStarving() != 10) {
+        while (pet.getHealth() != 0) {
             requireFeed();
-            requireActivity();
-            if (pet.getStarving() == 1) {
-                System.out.println("Congrats!You proved that you can take care of a pet!");
-                break;
-            }else if(pet.getStarving()==10){
+            if (pet.getStarving() >= 10) {
                 System.out.println("Your pet is starving to death!Feed him!");
-                requireFeed();
-                if (pet.getStarving()>10){
-                    System.out.println("Oh no!That's a tradedy! You killed your little buddy!");
-                    break;
-                }
+                pet.setHealth(pet.getHealth() - 2);
+
+            }else if(pet.getStarving()>4 & pet.getStarving()<10){
+                System.out.println("Your pet is really hungry.You should feed him!");
+                pet.setHealth(pet.getHealth() -1);
             }
+            if (pet.getHealth()<=0 ){
+                System.out.println("Your pet is dead!");
+                break;
+            }
+            if (pet.getHealth()< 5){
+                requireMedicine();
+            }
+            System.out.println("Your pet health is: " + pet.getHealth());
+
         }
 
 
@@ -120,6 +127,7 @@ public class Game {
 //            pet.setSpecies("Bulldog");
             pet.setStarving(5);
             pet.setHappiness(10);
+            pet.setHealth(10);
             pet.setAge(1);
             pet.setFavoriteFood("Biscuits");
             pet.setFavoritePastime("Running");
@@ -130,6 +138,7 @@ public class Game {
 //            fish = (Fish) pet;
             pet.setStarving(2);
             pet.setHappiness(10);
+            pet.setHealth(10);
             pet.setAge(1);
             pet.setFavoriteFood("Lettuce");
             pet.setFavoritePastime("Swimming");
@@ -138,6 +147,29 @@ public class Game {
 
         }
 
+    }
+
+    private void initVeterinary(){
+        doctor = new Veterinary("Dr.Trevor");
+
+    }
+
+    private void requireMedicine(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Your pet is ill!You should go to a doctor.Do you want?");
+        String response = getResponseForMedicineFromUser();
+        if (response.equalsIgnoreCase("yes")){
+            player.goToDoctor(pet,doctor);
+            doctor.examinate(pet);
+            doctor.giveMedicine(pet);
+        }else if (response.equalsIgnoreCase("no")){
+            System.out.println("You should be more responsable!");
+        }
+    }
+    private String getResponseForMedicineFromUser(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter your response:");
+        return in.nextLine();
     }
 
     private void requireFeed() {
@@ -150,8 +182,8 @@ public class Game {
             System.out.println("Choose food:");
             PetFood food = getFoodSelectedByUser();
             player.feed(pet, food);
-        }else if (response.equalsIgnoreCase("no")){
-            pet.setStarving(pet.getStarving() +1);
+        } else if (response.equalsIgnoreCase("no")) {
+            pet.setStarving(pet.getStarving() + 1);
             System.out.println("You didn't fed your pet!You starving level now is: " + pet.getStarving());
         }
 
