@@ -20,6 +20,7 @@ public class PetFood {
 //
 //    }
 
+
     public String getFoodName() {
         return foodName;
     }
@@ -60,13 +61,7 @@ public class PetFood {
         this.ingredients = ingredients;
     }
 
-    public LocalDate getExpirationDate() {
-        return expirationDate;
-    }
 
-    public void setExpirationDate(LocalDate expirationDate) {
-        this.expirationDate = expirationDate;
-    }
 
     @Override
     public String toString() {

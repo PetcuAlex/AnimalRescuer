@@ -17,9 +17,8 @@ public class Adopter {
     public void feed(Animal animal, PetFood petFood) {
 
         System.out.println(adopterName + " just gave " + petFood.getFoodName() + " food to " + animal.getName());
-        int newStarvingLevel = animal.getStarving();
-        newStarvingLevel--;
-        System.out.println("Your starving level is: " + newStarvingLevel);
+        animal.setStarving(animal.getStarving() - 1);
+        System.out.println("Your starving level is: " + animal.getStarving());
         if (petFood.getFoodName().equals(animal.getFavoriteFood())){
             int newHappinessLevel = animal.getHappiness();
             newHappinessLevel++;
