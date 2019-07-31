@@ -1,5 +1,7 @@
 package Homework;
 
+import java.util.Map;
+
 public class Adopter {
 
     private String adopterName;
@@ -8,6 +10,7 @@ public class Adopter {
     private String hairColor;
     private String genere;
     private String job;
+    private int inventory;
 
 
     public Adopter(String adopterName) {
@@ -18,6 +21,7 @@ public class Adopter {
 
         System.out.println(adopterName + " just gave " + petFood.getFoodName() + " food to " + animal.getName());
         animal.setStarving(animal.getStarving() - 1);
+        petFood.setQuantity(petFood.getQuantity()-1);
         System.out.println("Your starving level is: " + animal.getStarving());
         if (petFood.getFoodName().equals(animal.getFavoriteFood())){
             int newHappinessLevel = animal.getHappiness();
@@ -94,5 +98,13 @@ public class Adopter {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
     }
 }

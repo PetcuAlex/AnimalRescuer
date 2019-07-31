@@ -9,34 +9,62 @@ public class Game {
     private Adopter player;
     private Animal pet;
     private Veterinary doctor;
+    private PetFood food1, food2, food3;
     private PetFood[] availableFood = new PetFood[4];
     private Pastime[] availableActivities = new Pastime[3];
-
 
     public void start() {
 
         initFood();
-        displayFood();
         initActivities();
         initVeterinary();
-        displayActivities();
         initAdopter();
         initAniaml();
+        if (pet.getHappiness() > 10) {
+            System.out.println("Your happiness level is full.");
+            pet.setHappiness(10);
+        }
+        if (pet.getStarving() > 11) {
+            pet.setStarving(11);
+        }
         while (pet.getHealth() != 0) {
+            int timesNearDeath = 0;
+            requireActivity();
             requireFeed();
             if (pet.getStarving() >= 10) {
                 System.out.println("Your pet is starving to death!Feed him!");
                 pet.setHealth(pet.getHealth() - 2);
 
-            }else if(pet.getStarving()>4 & pet.getStarving()<10){
+            } else if (pet.getStarving() > 4 & pet.getStarving() < 10) {
                 System.out.println("Your pet is really hungry.You should feed him!");
-                pet.setHealth(pet.getHealth() -1);
+                pet.setHealth(pet.getHealth() - 1);
             }
-            if (pet.getHealth()<=0 ){
-                System.out.println("Your pet is dead!");
+            if (pet.getHealth() <= 0) {
+                System.out.println("Your pet stopped breathing!Call an ambulance right now!");
+                System.out.println("Call ambulance?");
+                String response = getAmbluanceResponseFromUser();
+                if (response.equalsIgnoreCase("yes")) {
+                    player.goToDoctor(pet, doctor);
+                    doctor.examinate(pet);
+                    doctor.diagnostic(pet);
+                    doctor.doSurgery(pet);
+                    timesNearDeath++;
+                    if (pet.getHealth() == -20) {
+                        System.out.println("Your pet is dead , shame on you!");
+                        break;
+                    }
+                } else if (response.equalsIgnoreCase("no")) {
+                    System.out.println("Your pet died!Shame on you!You could save him!");
+                    break;
+                }
+
+            }
+            if (timesNearDeath == 3) {
+                doctor.contactAnimalProtection(pet);
+                System.out.println("You lost that game!");
                 break;
             }
-            if (pet.getHealth()< 5){
+            if (pet.getHealth() < 5) {
                 requireMedicine();
             }
             System.out.println("Your pet health is: " + pet.getHealth());
@@ -114,6 +142,11 @@ public class Game {
 //        adopter2.entertain(fish,pa
     }
 
+    private String getAmbluanceResponseFromUser() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Yes or no?");
+        return in.nextLine();
+    }
 
     private void initAniaml() {
 
@@ -149,24 +182,25 @@ public class Game {
 
     }
 
-    private void initVeterinary(){
+    private void initVeterinary() {
         doctor = new Veterinary("Dr.Trevor");
 
     }
 
-    private void requireMedicine(){
+    private void requireMedicine() {
         Scanner in = new Scanner(System.in);
         System.out.println("Your pet is ill!You should go to a doctor.Do you want?");
         String response = getResponseForMedicineFromUser();
-        if (response.equalsIgnoreCase("yes")){
-            player.goToDoctor(pet,doctor);
+        if (response.equalsIgnoreCase("yes")) {
+            player.goToDoctor(pet, doctor);
             doctor.examinate(pet);
             doctor.giveMedicine(pet);
-        }else if (response.equalsIgnoreCase("no")){
+        } else if (response.equalsIgnoreCase("no")) {
             System.out.println("You should be more responsable!");
         }
     }
-    private String getResponseForMedicineFromUser(){
+
+    private String getResponseForMedicineFromUser() {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter your response:");
         return in.nextLine();
@@ -181,6 +215,10 @@ public class Game {
             displayFood();
             System.out.println("Choose food:");
             PetFood food = getFoodSelectedByUser();
+            if (food.getQuantity() <= 0) {
+                System.out.println("You need to buy some food!");
+                buyFood(player);
+            }
             player.feed(pet, food);
         } else if (response.equalsIgnoreCase("no")) {
             pet.setStarving(pet.getStarving() + 1);
@@ -248,6 +286,7 @@ public class Game {
         player.setAge(getAdopterAgeFromUser());
         player.setGenere(getAdopterGenereFromUser());
         player.setWallet(200);
+        player.setInventory(0);
         System.out.println("Welcome, " + player.getAdopterName() + " now you are ready to take a pet.");
 
     }
@@ -311,21 +350,68 @@ public class Game {
 
 
     }
+//    private void initInventory(){
+//        inventory[0] = 0;
+//        inventory[1] = 0;
+//        inventory[2] = 0;
+//        inventory[3] = 0;
 
+
+    private int getAmountOfFoodFromUser() {
+        Scanner in = new Scanner(System.in);
+        return in.nextInt();
+    }
+
+    private void buyFood(Adopter adopter) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("What do you want to buy?");
+        displayFood();
+        PetFood boughtFood = getFoodSelectedByUser();
+        System.out.println("How many do you want?");
+        int amount = getAmountOfFoodFromUser();
+        if (player.getWallet() < boughtFood.getPrice() * amount) {
+            System.out.println("Sorry you can't afford to buy this!Try to buy something you have money for");
+            System.out.println("Continue shopping?Yes or no?");
+            if (in.nextLine().equalsIgnoreCase("yes"))
+                buyFood(player);
+            else if (in.nextLine().equalsIgnoreCase("no")) {
+                System.out.println("Good bye!");
+
+            }
+
+        } else {
+            System.out.println("You bought " + amount + " " + boughtFood.getFoodName());
+            adopter.setWallet(adopter.getWallet() - boughtFood.getPrice() * amount);
+            System.out.println("The total is: " + boughtFood.getPrice() * amount);
+            System.out.println("Current ballance is: " + adopter.getWallet());
+            boughtFood.setQuantity(boughtFood.getQuantity() + amount);
+            System.out.println("You know have " + boughtFood.getQuantity() + " " + boughtFood.getFoodName());
+            System.out.println("Do you want to buy something else?");
+            if (in.nextLine().equalsIgnoreCase("yes")){
+                buyFood(player);
+            }else if (in.nextLine().equalsIgnoreCase("no")){
+                System.out.println("Good bye!");
+            }
+        }
+    }
 
     private void initFood() {
 
-        PetFood food1 = new PetFood();
+        food1 = new PetFood();
         food1.setFoodName("biscuits");
+        food1.setPrice(10);
+        food1.setQuantity(0);
         availableFood[0] = food1;
-        PetFood food2 = new PetFood();
+        food2 = new PetFood();
         food2.setFoodName("meat");
+        food2.setPrice(25);
+        food2.setQuantity(0);
         availableFood[1] = food2;
-        PetFood food3 = new PetFood();
+        food3 = new PetFood();
         food3.setFoodName("lettuce");
+        food3.setPrice(5);
+        food3.setQuantity(0);
         availableFood[2] = food3;
-        PetFood noFood = new PetFood();
-        noFood.setFoodName("I don't want to feed my pet.");
 
 
     }

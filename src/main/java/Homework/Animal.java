@@ -12,6 +12,8 @@ public class Animal {
     private int height;
     private int weight;
 
+
+
     public void expressHappines(){
 
         System.out.println(getName() + " is happy");
