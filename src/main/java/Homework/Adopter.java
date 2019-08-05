@@ -1,6 +1,5 @@
 package Homework;
 
-import java.util.Map;
 
 public class Adopter {
 
@@ -9,12 +8,24 @@ public class Adopter {
     private int age;
     private String hairColor;
     private String genere;
-    private String job;
-    private int inventory;
+    private Jobs job;
 
 
     public Adopter(String adopterName) {
         this.adopterName = adopterName;
+    }
+
+    public void work(){
+        System.out.println(adopterName + " is going to work...");
+        System.out.println(adopterName + " took his " + getJob().getJobName() + " outfit");
+        System.out.println(adopterName + " started his shift");
+        System.out.println("Time past...");
+        System.out.println("Time past...");
+        System.out.println(adopterName + " finished his shift and now go to home");
+        setWallet(getWallet()+getJob().getPayday());
+        System.out.println("You received " + getJob().getPayday() + " $. Current balance: " + getWallet());
+        System.out.println("Traveling...");
+        System.out.println("Welcome back home, " + adopterName + "!");
     }
 
     public void feed(Animal animal, PetFood petFood) {
@@ -92,19 +103,13 @@ public class Adopter {
         this.genere = genere;
     }
 
-    public String getJob() {
+    public Jobs getJob() {
         return job;
     }
 
-    public void setJob(String job) {
+    public void setJob(Jobs job) {
         this.job = job;
     }
 
-    public int getInventory() {
-        return inventory;
-    }
 
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
-    }
 }

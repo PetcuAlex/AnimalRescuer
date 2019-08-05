@@ -1,10 +1,12 @@
 package Homework;
 
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class Game {
+class Game {
 
     private Adopter player;
     private Animal pet;
@@ -12,30 +14,58 @@ public class Game {
     private PetFood food1, food2, food3;
     private PetFood[] availableFood = new PetFood[4];
     private Pastime[] availableActivities = new Pastime[3];
+    private Jobs[] availableJobs = new Jobs[3];
+    private int day = 1;
 
-    public void start() {
+    void start() {
 
         initFood();
         initActivities();
+        initJobs();
         initVeterinary();
         initAdopter();
         initAniaml();
-        if (pet.getHappiness() > 10) {
-            System.out.println("Your happiness level is full.");
-            pet.setHappiness(10);
-        }
-        if (pet.getStarving() > 11) {
-            pet.setStarving(11);
-        }
+
         while (pet.getHealth() != 0) {
+            System.out.println("Day " + day++);
+            if (pet.getHappiness() > 10) {
+                System.out.println("Your happiness level is full.");
+                pet.setHappiness(10);
+            }
+            if (pet.getStarving() > 10) {
+                pet.setStarving(10);
+            }
+            if (pet.getHealth() > 10) {
+                pet.setHealth(10);
+            }
+            if (day == 5) {
+                player.getJob().setRank(2);
+                player.getJob().setPayday(player.getJob().getPayday() + 5);
+            } else if (day == 10) {
+                player.getJob().setRank(3);
+                player.getJob().setPayday(player.getJob().getPayday() + 5);
+
+            } else if (day == 15) {
+                player.getJob().setRank(4);
+                player.getJob().setPayday(player.getJob().getPayday() + 10);
+
+            } else if (day == 25) {
+                player.getJob().setRank(5);
+                player.getJob().setPayday(player.getJob().getPayday() + 25);
+
+            }
             int timesNearDeath = 0;
-            requireActivity();
-            requireFeed();
-            if (pet.getStarving() >= 10) {
+            if (pet.getHappiness() < 10) {
+                requireActivity();
+            }
+            if (pet.getStarving() < 10) {
+                requireFeed();
+            }
+            if (pet.getStarving() >= 5) {
                 System.out.println("Your pet is starving to death!Feed him!");
                 pet.setHealth(pet.getHealth() - 2);
 
-            } else if (pet.getStarving() > 4 & pet.getStarving() < 10) {
+            } else if (pet.getStarving() > 2 & pet.getStarving() < 5) {
                 System.out.println("Your pet is really hungry.You should feed him!");
                 pet.setHealth(pet.getHealth() - 1);
             }
@@ -68,6 +98,12 @@ public class Game {
                 requireMedicine();
             }
             System.out.println("Your pet health is: " + pet.getHealth());
+
+            player.work();
+            pet.setHappiness(pet.getHappiness() - 1);
+            requireActivity();
+            requireFeed();
+            endDay();
 
         }
 
@@ -142,6 +178,12 @@ public class Game {
 //        adopter2.entertain(fish,pa
     }
 
+    private void endDay() {
+        System.out.println("You completed this day!");
+        System.out.println("Your pet stats are" + pet);
+        System.out.println("Sleeping...Zzzzz...Zzzzz...");
+    }
+
     private String getAmbluanceResponseFromUser() {
         Scanner in = new Scanner(System.in);
         System.out.println("Yes or no?");
@@ -159,7 +201,7 @@ public class Game {
 //            pet.setFurColor("Black");
 //            pet.setSpecies("Bulldog");
             pet.setStarving(5);
-            pet.setHappiness(10);
+            pet.setHappiness(5);
             pet.setHealth(10);
             pet.setAge(1);
             pet.setFavoriteFood("Biscuits");
@@ -167,10 +209,10 @@ public class Game {
             System.out.println("You choose a dog and his name is " + pet.getName());
 
         } else if (chooseAnimal.equalsIgnoreCase("fish")) {
-//             pet = new Fish(getAnimalNameFromUser());
+            pet = new Fish(getAnimalNameFromUser());
 //            fish = (Fish) pet;
-            pet.setStarving(2);
-            pet.setHappiness(10);
+            pet.setStarving(5);
+            pet.setHappiness(5);
             pet.setHealth(10);
             pet.setAge(1);
             pet.setFavoriteFood("Lettuce");
@@ -188,7 +230,6 @@ public class Game {
     }
 
     private void requireMedicine() {
-        Scanner in = new Scanner(System.in);
         System.out.println("Your pet is ill!You should go to a doctor.Do you want?");
         String response = getResponseForMedicineFromUser();
         if (response.equalsIgnoreCase("yes")) {
@@ -210,7 +251,7 @@ public class Game {
         Scanner in = new Scanner(System.in);
         System.out.println("Your pet is hungry.Feed your pet!");
         System.out.println("Do you want?");
-        String response = getFoodResponseFromUser();
+        String response = getResponseFromUser();
         if (response.equalsIgnoreCase("yes")) {
             displayFood();
             System.out.println("Choose food:");
@@ -222,29 +263,39 @@ public class Game {
             player.feed(pet, food);
         } else if (response.equalsIgnoreCase("no")) {
             pet.setStarving(pet.getStarving() + 1);
+            pet.setHealth(pet.getHealth() - 1);
             System.out.println("You didn't fed your pet!You starving level now is: " + pet.getStarving());
         }
 
 
     }
 
-    private String getFoodResponseFromUser() {
+    private String getResponseFromUser() {
         Scanner in = new Scanner(System.in);
         try {
-            System.out.println("Enter your response:");
+            System.out.println("Enter your response:Yes or no?");
             return in.nextLine();
         } catch (InputMismatchException e) {
-            return getFoodResponseFromUser();
+            return getResponseFromUser();
         }
     }
 
     private void requireActivity() {
         Scanner in = new Scanner(System.in);
         System.out.println("Your pet is sad.Do an activity with your pet!");
-        displayActivities();
-        System.out.println("Choose an activity:");
-        Pastime activity = getActivitySelectedByUser();
-        player.entertain(pet, activity);
+        System.out.println("Do you want?");
+        String response = getResponseFromUser();
+        if (response.equalsIgnoreCase("yes")) {
+            displayActivities();
+            System.out.println("Choose an activity:");
+            Pastime activity = getActivitySelectedByUser();
+            player.entertain(pet, activity);
+        } else if (response.equalsIgnoreCase("no")) {
+            pet.setHappiness(pet.getHappiness() - 1);
+            System.out.println("Your pet hapiness decreased to: " + pet.getHappiness());
+            pet.setHealth(pet.getHealth()-1);
+            System.out.println("Your pet health decreased to: " + pet.getHealth());
+        }
 
 
     }
@@ -255,7 +306,6 @@ public class Game {
             Scanner in = new Scanner(System.in);
             int foodNumber = in.nextInt();
             PetFood petFood = availableFood[foodNumber - 1];
-            System.out.println(petFood);
             return petFood;
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
             System.out.println("You entered an invalid food number.Please try again...");
@@ -264,13 +314,21 @@ public class Game {
 
     }
 
+    private Jobs getAdopterJobFromUser() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter job number:");
+        displayJobs();
+        int jobNumber = in.nextInt();
+        Jobs jobs = availableJobs[jobNumber - 1];
+        return jobs;
+    }
+
     private Pastime getActivitySelectedByUser() {
         System.out.println("Please enter activity number:");
         try {
             Scanner in = new Scanner(System.in);
             int activityNumber = in.nextInt();
             Pastime pastime = availableActivities[activityNumber - 1];
-            System.out.println(pastime);
             return pastime;
         } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
             System.out.println("You entered an invalid avtivity number.Please try again...");
@@ -286,8 +344,8 @@ public class Game {
         player.setAge(getAdopterAgeFromUser());
         player.setGenere(getAdopterGenereFromUser());
         player.setWallet(200);
-        player.setInventory(0);
-        System.out.println("Welcome, " + player.getAdopterName() + " now you are ready to take a pet.");
+        player.setJob(getAdopterJobFromUser());
+        System.out.println("Welcome, " + player.getAdopterName() + ".You now work as a " + player.getJob() + " and now you are ready to take a pet.");
 
     }
 
@@ -300,6 +358,7 @@ public class Game {
             return getAdopterNameFromUser();
         }
     }
+
 
     private int getAdopterAgeFromUser() {
         Scanner in = new Scanner(System.in);
@@ -333,7 +392,18 @@ public class Game {
         System.out.println("Available food:");
         for (int i = 0; i < availableFood.length; i++) {
             if (availableFood[i] != null) {
-                System.out.println((i + 1) + ". " + availableFood[i].getFoodName());
+                System.out.println((i + 1) + ". " + availableFood[i].getFoodName() + ": " + availableFood[i].getQuantity());
+            }
+        }
+
+
+    }
+
+    private void displayJobs() {
+        System.out.println("Available jobs:");
+        for (int k = 0; k < availableJobs.length; k++) {
+            if (availableJobs[k] != null) {
+                System.out.println((k + 1) + ". " + availableJobs[k].getJobName() + ": " + availableJobs[k].getPayday() + " $/day");
             }
         }
 
@@ -372,9 +442,10 @@ public class Game {
         if (player.getWallet() < boughtFood.getPrice() * amount) {
             System.out.println("Sorry you can't afford to buy this!Try to buy something you have money for");
             System.out.println("Continue shopping?Yes or no?");
-            if (in.nextLine().equalsIgnoreCase("yes"))
+            String response = getResponseFromUser();
+            if (response.equalsIgnoreCase("yes")) {
                 buyFood(player);
-            else if (in.nextLine().equalsIgnoreCase("no")) {
+            } else if (response.equalsIgnoreCase("no")) {
                 System.out.println("Good bye!");
 
             }
@@ -387,12 +458,30 @@ public class Game {
             boughtFood.setQuantity(boughtFood.getQuantity() + amount);
             System.out.println("You know have " + boughtFood.getQuantity() + " " + boughtFood.getFoodName());
             System.out.println("Do you want to buy something else?");
-            if (in.nextLine().equalsIgnoreCase("yes")){
+            if (in.nextLine().equalsIgnoreCase("yes")) {
                 buyFood(player);
-            }else if (in.nextLine().equalsIgnoreCase("no")){
+            } else if (in.nextLine().equalsIgnoreCase("no")) {
                 System.out.println("Good bye!");
             }
         }
+    }
+
+    private void initJobs() {
+        Jobs job = new Jobs();
+        job.setJobName("Cooker");
+        job.setPayday(ThreadLocalRandom.current().nextInt(10, 25));
+        job.setRank(1);
+        availableJobs[0] = job;
+        Jobs job2 = new Jobs();
+        job2.setJobName("Bartender");
+        job2.setPayday(ThreadLocalRandom.current().nextInt(10, 25));
+        job2.setRank(1);
+        availableJobs[1] = job2;
+        Jobs job3 = new Jobs();
+        job3.setJobName("Bus Driver");
+        job3.setPayday(ThreadLocalRandom.current().nextInt(10, 25));
+        job3.setRank(1);
+        availableJobs[2] = job3;
     }
 
     private void initFood() {

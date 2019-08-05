@@ -15,6 +15,8 @@ public class Veterinary extends MedicalStaff {
         Scanner in = new Scanner(System.in);
         System.out.println(getName() + " is looking at " + animal.getName());
         System.out.println("Let's see what your pet has!");
+        System.out.println("Type 'major' ");
+
     }
 
     public void giveMedicine( Animal animal){

@@ -97,4 +97,12 @@ public class Animal {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return ", health=" + health +
+                ", starving=" + starving +
+                ", happiness=" + happiness +
+                '}';
+    }
 }
