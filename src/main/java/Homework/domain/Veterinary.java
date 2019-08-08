@@ -1,6 +1,5 @@
-package Homework;
+package Homework.domain;
 
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 

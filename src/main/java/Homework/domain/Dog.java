@@ -1,4 +1,4 @@
-package Homework;
+package Homework.domain;
 
 public class Dog extends Animal {
 
@@ -12,14 +12,14 @@ public class Dog extends Animal {
       System.out.println(getName() + " is wagging");
    }
 
-   public Dog(String name, String breed) {
-      super(name);
-      this.breed = breed;
-   }
+//   public Dog(String name, String breed) {
+//      super(name);
+//      this.breed = breed;
+//   }
 
-   public Dog(String name) {
-      super(name);
-   }
+//   public Dog(String name) {
+//      super(name);
+//   }
 
    public String getTalk() {
       return talk;

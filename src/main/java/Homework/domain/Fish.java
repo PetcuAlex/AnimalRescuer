@@ -1,4 +1,4 @@
-package Homework;
+package Homework.domain;
 
 public class Fish extends Animal {
 
@@ -6,9 +6,9 @@ public class Fish extends Animal {
    private boolean needMoreOxygenedWater;
    private String species;
 
-    public Fish(String name) {
-        super(name);
-    }
+//    public Fish(String name) {
+//        super(name);
+//    }
 
     @Override
     public void expressHappines() {

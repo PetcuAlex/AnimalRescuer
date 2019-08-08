@@ -1,7 +1,6 @@
-package Homework;
+package Homework.domain;
 
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -196,10 +195,11 @@ class Game {
         System.out.println("You want a dog or a fish?");
         String chooseAnimal = in.nextLine();
         if (chooseAnimal.equalsIgnoreCase("dog")) {
-            pet = new Dog(getAnimalNameFromUser());
+            pet = new Dog();
 //            dog = (Dog) pet;
 //            pet.setFurColor("Black");
 //            pet.setSpecies("Bulldog");
+            pet.setName(getAnimalNameFromUser());
             pet.setStarving(5);
             pet.setHappiness(5);
             pet.setHealth(10);
@@ -209,8 +209,9 @@ class Game {
             System.out.println("You choose a dog and his name is " + pet.getName());
 
         } else if (chooseAnimal.equalsIgnoreCase("fish")) {
-            pet = new Fish(getAnimalNameFromUser());
+            pet = new Fish();
 //            fish = (Fish) pet;
+            pet.setName(getAnimalNameFromUser());
             pet.setStarving(5);
             pet.setHappiness(5);
             pet.setHealth(10);

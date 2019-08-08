@@ -1,7 +1,5 @@
-package Homework;
+package Homework.domain;
 
-
-import java.time.LocalDate;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package Homework;
+package Homework.domain;
 
 public class Nurse extends  MedicalStaff{
 

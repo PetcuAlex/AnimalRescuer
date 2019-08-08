@@ -1,7 +1,8 @@
-package Homework;
+package Homework.domain;
 
 public class Animal {
 
+    private long id;
     private String name;
     private int age;
     private int health;
@@ -21,9 +22,9 @@ public class Animal {
     }
 
 
-    public Animal(String name) {
-        this.name = name;
-    }
+//    public Animal(String name) {
+//        this.name = name;
+//    }
 
     public String getName() {
         return name;
@@ -96,6 +97,14 @@ public class Animal {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

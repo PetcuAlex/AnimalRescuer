@@ -1,4 +1,4 @@
-package Homework;
+package Homework.domain;
 
 import java.time.LocalDate;
 import java.util.Calendar;
